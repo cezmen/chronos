@@ -1,0 +1,119 @@
+menu "Example Configuration"
+
+menu "SoftAP"
+
+    config ESP_WIFI_SSID
+        string "WiFi SSID"
+        default "myssid"
+        help
+            SSID (network name) for the example to connect to.
+
+    config ESP_WIFI_PASSWORD
+        string "WiFi Password"
+        default "mypassword"
+        help
+            WiFi password (WPA or WPA2) for the example to use.
+    config ESP_WIFI_CHANNEL
+        int "WiFi Channel"
+        range 1 13
+        default 1
+        help
+            WiFi channel (network channel) for the example to use.
+
+    config ESP_MAX_STA_CONN
+        int "Maximal STA connections"
+        default 4
+        help
+            Max number of the STA connects to AP.
+
+    config ESP_INTERFACE_IP
+        string "IPv4 Address"
+        default "192.168.4.1"
+        help
+            The IPv4 Address of the SoftAP
+
+    config ESP_INTERFACE_GW
+        string "Gateway IPv4 Address"
+        default "192.168.4.1"
+        help
+            The IPv4 Address of the Gateway
+
+    config ESP_INTERFACE_NETMASK
+        string "Netmask"
+        default "255.255.255.0"
+        help
+            The IPv4 Netmask
+
+
+endmenu
+
+
+menu "TCP Server"
+
+    config ESP_IPV4
+        bool "IPV4"
+        default y
+
+    config ESP_IPV6
+        bool "IPV6"
+        default n
+        select ESP_CONNECT_IPV6
+
+    config ESP_PORT
+        int "Port"
+        range 0 65535
+        default 3333
+        help
+            Local port the example server will listen on.
+
+    config ESP_KEEPALIVE_IDLE
+        int "TCP keep-alive idle time(s)"
+        default 5
+        help
+            Keep-alive idle time. In idle time without receiving any data from peer, will send keep-alive probe packet
+
+    config ESP_KEEPALIVE_INTERVAL
+        int "TCP keep-alive interval time(s)"
+        default 5
+        help
+            Keep-alive probe packet interval time.
+
+    config ESP_KEEPALIVE_COUNT
+        int "TCP keep-alive packet retry send counts"
+        default 3
+        help
+            Keep-alive probe packet retry count.
+endmenu
+
+menu "FTM"
+
+    config ESP_FTM_REPORT_LOG_ENABLE
+        bool "FTM Report logging"
+        default n
+        depends on ESP_WIFI_FTM_INITIATOR_SUPPORT
+        help
+            Select this option to get a detailed report of FTM Procedure with raw values
+
+    config ESP_FTM_REPORT_SHOW_DIAG
+        depends on ESP_FTM_REPORT_LOG_ENABLE
+        bool "Show dialog tokens"
+        default y
+
+    config ESP_FTM_REPORT_SHOW_RTT
+        depends on ESP_FTM_REPORT_LOG_ENABLE
+        bool "Show RTT values"
+        default y
+
+    config ESP_FTM_REPORT_SHOW_T1T2T3T4
+        depends on ESP_FTM_REPORT_LOG_ENABLE
+        bool "Show T1 to T4"
+        default y
+
+    config ESP_FTM_REPORT_SHOW_RSSI
+        depends on ESP_FTM_REPORT_LOG_ENABLE
+        bool "Show RSSI levels"
+        default y
+
+endmenu
+
+endmenu
