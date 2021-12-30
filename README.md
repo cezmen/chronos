@@ -20,9 +20,9 @@ idf.py menuconfig
 
 ### [2.1] Set Configuration Parameters in the folowing menus :
 
-- Example Configuration->Soft AP
-- Example Configuration->TCP Server
-- Example Configuration->FTM
+- Example Configuration -> Soft AP
+- Example Configuration -> TCP Server
+- Example Configuration -> FTM
   
 | Parameter | Description | Example | Module |
 | ----------- | ----------- | ----------- | -----------|
@@ -46,7 +46,7 @@ idf.py menuconfig
 | ESP_FTM_REPORT_SHOW_RSSI | Show RSSI levels (y/n)| y | FTM |
 
 
-### [2.2] Aditional Parameters Setup
+### [2.2] Additional Parameters Setup
 
 Component Config -> WiFi ->
   - WiFi FTM : **y**
@@ -58,7 +58,7 @@ Serial Flasher Config ->
   - After Flashing : **Stay In Bootloader**
 
 Component Config -> Common ESP Related ->
-  - Channel for Console Output : **USB CDC** ( if using Franzinho WiFi) or **UART0** ( if using ESP32-S2-Devkit-C )
+  - Channel for Console Output : **USB CDC** ( if using Franzininho WiFi) or **UART0** ( if using ESP32-S2-Devkit-C )
   
 
 ### [3] Build
@@ -78,12 +78,12 @@ Flash the firmware to the board :
 ```
 idf.py -p <device name> flash
 ```
-(Note : Use 'ls /dev/tty*' to discover the exact **device name** in your environent)
+(Note : Use 'ls /dev/tty*' to discover the exact **device name** in your environment)
 
 
 ### [5] Monitor ( optional )
 
-Reset the board ( by pressing the RESET key ).    
+Reset the board ( by pressing and releasing the RESET key ).    
 
 
 ### [5.1] Monitor the Franzininho WiFi board (through USD CDC)
@@ -107,18 +107,13 @@ Run the ESP-IDF monitor :
 ```
 idf.py -p <device name>  monitor
 ```
-(Note : Use 'ls /dev/tty*' to discover the exact **device name** in your environent)
+(Note : Use 'ls /dev/tty*' to discover the exact **device name** in your environment)
 
 (To exit the serial monitor, type ``Ctrl-]``.)
 
 ### [6] Test Remotely (via TCP/IP)
-
 ### [6.1] Using a smartphone or PC, establish a WiFi connection to the ESP32-S2 Access Point (SSID="myssid", PASSWORD="mypassword")
-
-
 ### [6.2] Using a TCP/IP terminal emulator App ( or **telnet** command in the PC ), establish a TCP/IP connection to the ESP32-S2 ( IP=192.168.4.1, port=5000 )
-
-
 ### [6.3] Once connected (via TCP/IP), send commands ( getting their respective responses )
 
 | Command | Description | Example | 
